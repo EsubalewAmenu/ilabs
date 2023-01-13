@@ -1,0 +1,34 @@
+version: "3.0"
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - 3310:3306
+    volumes:
+      # - /tmp/ecombinator/mysqld:/var/run/mysqld
+      - db_data:/var/lib/mysql
+    env_file:
+      - ./.env
+      
+  ecombinator:
+    build: .
+    volumes:
+      # - /tmp/ecombinator/mysqld:/run/mysqld
+      - .:/ecombinator:rw
+    command: >
+      bash -c
+        "python manage.py makemigrations &&
+         python manage.py migrate &&
+         python manage.py runserver 0.0.0.0:8050"
+    env_file:
+      - ./.env
+    ports:
+      - "8050:8050"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
+
