@@ -9,3 +9,5 @@ PyJWT==2.6.0
 pytz==2022.6
 setuptools==65.5.0
 sqlparse==0.4.3
+django-ckeditor==6.5.1
+Pillow==9.2
