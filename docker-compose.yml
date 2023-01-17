@@ -7,16 +7,16 @@ services:
     ports:
       - 3310:3306
     volumes:
-      # - /tmp/ecombinator/mysqld:/var/run/mysqld
+      # - /tmp/icoglabs/mysqld:/var/run/mysqld
       - db_data:/var/lib/mysql
     env_file:
       - ./.env
       
-  ecombinator:
+  icoglabs:
     build: .
     volumes:
-      # - /tmp/ecombinator/mysqld:/run/mysqld
-      - .:/ecombinator:rw
+      # - /tmp/icoglabs/mysqld:/run/mysqld
+      - .:/icoglabs:rw
     command: >
       bash -c
         "python manage.py makemigrations &&

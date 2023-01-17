@@ -1,7 +1,7 @@
 FROM python:3.8-slim
 ENV PYTHONUNBUFFERED 1
-RUN mkdir /ecombinator
-WORKDIR /ecombinator
+RUN mkdir /icoglabs
+WORKDIR /icoglabs
 
 
 RUN apt-get update
@@ -10,4 +10,4 @@ RUN apt-get install -y default-libmysqlclient-dev
 RUN apt-get install -y gcc musl-dev
 COPY requirements.txt .
 RUN pip install -r requirements.txt --timeout 600
-COPY . /ecombinator
+COPY . /icoglabs
