@@ -16,14 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from auth import urls as auth_urls
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+from blogs import urls as blogs_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ecombinator/', include('ecombinator.urls')),
+
     path('auth/', include(auth_urls)),
+    
+    path('ecombinator/', include('ecombinator.urls')),
+    path('blogs/', include(blogs_urls)),
     
 ]
